@@ -9,7 +9,7 @@ namespace ConsoleApp10.Entities
     internal class Product
     {
         public string Name { get; set; }
-        public double Price { get; set; }
+        public double Price { get; protected set; }
 
         public Product() { }
 
@@ -21,7 +21,11 @@ namespace ConsoleApp10.Entities
 
         public virtual string PriceTag()
         {
-            return Price.ToString();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(Name);
+            stringBuilder.Append(" $ ");
+            stringBuilder.Append(Price);
+            return stringBuilder.ToString();
         }
     }
 }

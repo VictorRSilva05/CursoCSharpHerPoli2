@@ -8,7 +8,7 @@ namespace ConsoleApp10.Entities
 {
     internal class ImportedProduct : Product
     {
-        public double CustomsFee { get; set; }
+        public double CustomsFee { get; protected set; }
 
         public ImportedProduct() { }
 
@@ -22,9 +22,15 @@ namespace ConsoleApp10.Entities
             return base.PriceTag();
         }
 
-        public double TotalPrice()
+        public string TotalPrice()
         {
-            return Price + CustomsFee;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(Name);
+            stringBuilder.Append(" $ ");
+            stringBuilder.Append(Price);
+            stringBuilder.Append($" (Customs fee: {CustomsFee})");
+            return stringBuilder.ToString();
         }
+
     }
 }
